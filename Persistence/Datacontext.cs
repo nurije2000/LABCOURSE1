@@ -1,13 +1,15 @@
-using System;
 using Domain;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 
 namespace Persistence
 {
-    public class Datacontext : DbContext
+    public class DataContext : IdentityDbContext<AppUser>
     {
-        public Datacontext( DbContextOptions options) : base(options)
+        public DataContext(DbContextOptions options) : base(options)
         {
+            
         }
 
         public DbSet<Activity> Activities { get; set; }

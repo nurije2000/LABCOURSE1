@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Persistence;
+using Microsoft.AspNetCore.Identity;
+using Domain;
 
 namespace API
 {
@@ -20,9 +22,10 @@ namespace API
           using var scope = host.Services.CreateScope();
           var services = scope.ServiceProvider;
           try{
-             var context = services.GetRequiredService<Datacontext>();
-             context.Database.Migrate();
-             await Seed.SeedData(context);
+             var context = services.GetRequiredService<DataContext>();
+             var userManager = services.GetRequiredService<UserManager<AppUser>>();
+             await context.Database.MigrateAsync();
+             await Seed.SeedData(context, userManager);
           }catch(Exception ex)
           {
             var logger = services.GetRequiredService<ILogger<Program>>();
