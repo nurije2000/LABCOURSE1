@@ -1,4 +1,4 @@
-import {  makeAutoObservable, runInAction} from "mobx";
+import {  makeObservable, observable, runInAction} from "mobx";
 import agent from "../api/agent";
 import { Activity } from "../models/activity";
 import {format} from 'date-fns';
@@ -6,15 +6,14 @@ import {format} from 'date-fns';
 
 
 export default class ActivityStore{
-activityRegistry = new Map<string, Activity>();
-selectedActivity: Activity | undefined= undefined;
-editMode = false;
-loading = false;
-loadingInitial = false;
+@observable activityRegistry = new Map<string, Activity>();
+@observable selectedActivity: Activity | undefined= undefined;
+@observable editMode = false;
+@observable loading = false;
+@observable loadingInitial = false;
 
-    constructor(){
-        makeAutoObservable(this)
-
+constructor(){ 
+    makeObservable(this); 
     }
 
     get activitiesByDate(){
