@@ -31,15 +31,13 @@ export default function ActivityListItem({activity}: Props){
             <Icon name='marker' /> {activity.venue}
         </span>
     </Segment>
-    <Segment secondary>
-        Attendees go here
-    </Segment>
+   
     <Segment clearing>
         <span>{activity.description}</span>
         <Button 
             as={Link}
             to={`/activities/${activity.id}`}
-            color='teal'
+            color='pink'
             floated='right'
             content='View'
         />

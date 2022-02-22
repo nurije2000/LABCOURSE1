@@ -1,9 +1,9 @@
 export const categoryOptions =[
-    {text: 'Drinks', value: 'drinks'},
-    {text: 'Culture', value: 'culture'},
-    {text: 'Film', value: 'film'},
-    {text: 'Food', value: 'food'},
-    {text: 'Music', value: 'music'},
-    {text: 'Travel', value: 'travel'},
+    {text: 'Comedy', value: 'comedy'},
+    {text: 'Drama', value: 'drama'},
+    {text: 'Romance', value: 'romance'},
+    {text: 'Horror', value: 'horror'},
+    {text: 'Thriller', value: 'thriller'},
+    {text: 'Aksion', value: 'aksion'},
 
 ]
