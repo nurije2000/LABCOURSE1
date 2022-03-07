@@ -18,7 +18,7 @@ const {userStore, modalStore} = useStore();
                </Header>
                {userStore.isLoggedIn ? (
                    <>
-                   <Header as='h2' inverted content='Welcome to Movie App' />
+                   <Header as='h2' inverted content='Welcome to the App' />
                 <Button as={Link} to='/activities' size='huge' inverted>
                     Go to the movie!
                     </Button>

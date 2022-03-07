@@ -1,4 +1,4 @@
-export const categoryOptions =[
+export const categoryMovies =[
     {text: 'Comedy', value: 'comedy'},
     {text: 'Drama', value: 'drama'},
     {text: 'Romance', value: 'romance'},

@@ -13,5 +13,7 @@ namespace Persistence
         }
 
         public DbSet<Activity> Activities { get; set; }
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Actory> Actories { get; set; }
     }
 }

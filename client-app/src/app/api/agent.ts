@@ -2,6 +2,8 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
 import { toast } from 'react-toastify';
 import { history } from '../..';
 import { Activity } from '../models/activity';
+import { Movie } from '../models/movie';
+import { Actory } from '../models/actory';
 import { User, UserFormValues } from '../models/users';
 import { store } from '../stores/store';
 
@@ -75,6 +77,20 @@ const Activities ={
     update: (activity: Activity) => requests.put<void>(`/activities/${activity.id}` , activity),
     delete: (id: string) => requests.delete<void>(`/activities/${id}`)
 }
+const Movies ={
+    list: () => requests.get<Movie[]>('/movies'),
+    details: (id: string) => requests.get<Movie>(`/movies/${id}`),
+    create: (movie: Movie) => requests.post<void>('/movies',movie),
+    update: (movie: Movie) => requests.put<void>(`/movies/${movie.id}` , movie),
+    delete: (id: string) => requests.delete<void>(`/movies/${id}`)
+}
+const Actories ={
+    list: () => requests.get<Actory[]>('/actories'),
+    details: (id: string) => requests.get<Actory>(`/actories/${id}`),
+    create: (actory: Actory) => requests.post<void>('/actories',actory),
+    update: (actory: Actory) => requests.put<void>(`/actories/${actory.id}` , actory),
+    delete: (id: string) => requests.delete<void>(`/actories/${id}`)
+}
 const Account={
     current: () => requests.get<User>('/account'),
     login: (user: UserFormValues) => requests.post<User>('/account/login', user),
@@ -84,6 +100,8 @@ const Account={
 
 const agent = {
     Activities,
+    Movies,
+    Actories,
     Account
 }
 export default agent;

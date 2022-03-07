@@ -15,6 +15,12 @@ import LoginForm from '../../features/users/LoginForm';
 import { useStore } from '../stores/store';
 import LoadingComonent from './LoadingComponent';
 import ModalContainer from '../common/modals/ModalContainer';
+import MovieDashboard from '../../features/movies/dashboard/MovieDashboard';
+import MovieDetails from '../../features/movies/details/MovieDetails';
+import MovieForm from '../../features/movies/form/MovieForm';
+import ActoryForm from '../../features/actories/form/ActoryForm';
+import ActoryDetails from '../../features/actories/details/ActoryDetails';
+import ActoryDashboard from '../../features/actories/dashboard/ActoryDashboard';
 
 
 
@@ -46,6 +52,15 @@ function App() {
         <Route exact path='/activities' component={ActivityDashboard} />
         <Route path='/activities/:id' component={ActivityDetails} />
         <Route key={location.key} path={['/createActivity', '/manage/:id']} component={ActivityForm} />
+        
+        <Route exact path='/movies' component={MovieDashboard} />
+        <Route path='/movies/:id' component={MovieDetails} />
+        <Route key={location.key} path={['/createMovie', '/manageMovie/:id']} component={MovieForm} />
+
+        <Route exact path='/actories' component={ActoryDashboard} />
+        <Route path='/actories/:id' component={ActoryDetails} />
+        <Route key={location.key} path={['/createActory', '/manageActory/:id']} component={ActoryForm} />
+
         <Route path='/errors' component={TestErrors} />
         <Route path='/server-error' component={ServerError} />
         <Route path='/login' component={LoginForm} />

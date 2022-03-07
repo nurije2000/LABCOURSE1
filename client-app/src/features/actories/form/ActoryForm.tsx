@@ -9,72 +9,69 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import MyTextInput from '../../../app/common/form/MyTextInput';
 import MyTextArea from '../../../app/common/MyTextArea';
-
 import MySelectInput from '../../../app/common/form/MySelectInput';
 import MyDateInput from '../../../app/common/form/MyDateInput';
-import { Activity } from '../../../app/models/activity';
-import { categoryOptions } from '../../../app/common/options/categoryOptions';
+import { Actory } from '../../../app/models/actory';
+import { categoryActories } from '../../../app/common/options/categoryActories';
 
 
-export default observer(function ActivityForm(){
+export default observer(function ActoryForm(){
     const history = useHistory();
-    const {activityStore} = useStore();
-     const {createActivity, updateActivity, loading, loadActivity, loadingInitial} = activityStore;
+    const {actoryStore} = useStore();
+     const {createActory, updateActory, loading, loadActory, loadingInitial} = actoryStore;
      const {id} = useParams<{id: string}>();
-     const [activity, setActivity] = useState<Activity>({
+     const [actory, setActory] = useState<Actory>({
         id:'',
         title:'',
         category:'',
         description:'',
         date: null,
         city:'',
-        venue:'',
-        
+        venue:''
      });
 
      const validationSchema = Yup.object({
-         title: Yup.string().required('The activity title is required'),
-         description: Yup.string().required('The activity description is required'),
+         title: Yup.string().required('The actory title is required'),
+         description: Yup.string().required('The actory description is required'),
          category: Yup.string().required(),
          date: Yup.string().required('Date is required').nullable(),
          venue: Yup.string().required(), 
          city: Yup.string().required(),
-         
      })
 
      useEffect(() =>{
 
-        if(id) loadActivity(id).then(activity => setActivity(activity!))
-     }, [id, loadActivity]);
+        if(id) loadActory(id).then(actory => setActory(actory!))
+     }, [id, loadActory]);
 
-    function handleFormSubmit(activity: Activity){
-       if (activity.id.length === 0){
-           let newActivity = {
-               ...activity,
+    function handleFormSubmit(actory: Actory){
+       if (actory.id.length === 0){
+           let newActory = {
+               ...actory,
                id: uuid()
            };
-           createActivity(newActivity).then(() =>history.push(`/activities/${newActivity.id}`))
+           createActory(newActory).then(() =>history.push(`/actories/${newActory.id}`))
       } else {
-           updateActivity(activity).then(()=>history.push(`/activities/${activity.id}`))
+           updateActory(actory).then(()=>history.push(`/actories/${actory.id}`))
        }
        }
 
 
-    if(loadingInitial) return <LoadingComonent content='Loading activity...' />
+    if(loadingInitial) return <LoadingComonent content='Loading actory...' />
 
     return(
         <Segment clearing>
-            <Header content='Activity Details' sub color='grey'  />
+            <Header content='Actory Details' sub color='grey'  />
             <Formik 
             validationSchema={validationSchema}
             enableReinitialize 
-            initialValues={activity} 
+            initialValues={actory} 
             onSubmit={values => handleFormSubmit(values)} > 
             {({ handleSubmit, isValid, isSubmitting, dirty }) => (
                 <Form className='ui form' onSubmit={handleSubmit} autoComplete='off' >
                 <MyTextInput name='title' placeholder='Name' />
                 <MyTextArea rows={3} placeholder='Description'  name='description' />
-                <MySelectInput  options={categoryOptions} placeholder='Category'  name='category' />
+                <MySelectInput  options={categoryActories} placeholder='Category'  name='category' />
                 <MyDateInput 
                     placeholderText='Date' 
                     name='date' 
@@ -85,12 +82,11 @@ export default observer(function ActivityForm(){
                  <Header content='Location Details' sub color='grey'  />
                 <MyTextInput placeholder='City'  name='city' />
                 <MyTextInput placeholder='Venue'  name='venue' />
-                
                 <Button
                  disabled={isSubmitting || !dirty || !isValid}
                  loading={loading} floated='right' 
                  positive type='submit' content='Submit' />
-                <Button as={Link} to='/activities' floated='right'  type='button' content='Cancel' />
+                <Button as={Link} to='/actories' floated='right'  type='button' content='Cancel' />
             </Form>
             )}
             </Formik>

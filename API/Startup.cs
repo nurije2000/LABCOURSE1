@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using API.Extensions;
 using API.Middleware;
 using Application.Activities;
+using Application.Actories;
+using Application.Movies;
 using Application.Core;
 using AutoMapper;
 using FluentValidation.AspNetCore;

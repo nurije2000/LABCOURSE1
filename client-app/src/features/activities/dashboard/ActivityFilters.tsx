@@ -6,13 +6,13 @@ export default function ActivityFilters(){
     return(
         <>
          <Menu vertical size='large' style={{width: '100%,marginTop:25 '}}>
-            <Header icon='filter' attached color='black' content='Movies' />
-            <Menu.Item content="Comedy"/>
-            <Menu.Item content="Drama" />
-            <Menu.Item content="Romance" />
-            <Menu.Item content="Horror" />
-            <Menu.Item content="Thriller" />
-            <Menu.Item content=".." />
+            <Header icon='filter' attached color='black' content='Snacks' />
+            <Menu.Item content="Drinks"/>
+            <Menu.Item content="Popcorn" />
+            <Menu.Item content="Chocolate" />
+            <Menu.Item content="Cola" />
+            <Menu.Item content="Chips" />
+            <Menu.Item content="..." />
         </Menu>
         <Header />
         <Calendar   />
